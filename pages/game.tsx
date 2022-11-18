@@ -51,30 +51,12 @@ export default function Home() {
 
   return (
     <div className="container">
-      <Link href="/">Go to edit players</Link>
-      <Link href="/history">Go to game history</Link>
-
-      <button
-        onClick={() => {
-          localStorage.removeItem("X");
-          localStorage.removeItem("O");
-          localStorage.removeItem("isPlayerOne");
-
-          setBoardData(emptyData);
-          setWinner("");
-          setCurrentPlayerMoves([]);
-          setNextPlayer("");
-
-          setPlayers();
-          setPlayersName();
-          setIsPlayerOne(false);
-          router.push("/");
-        }}
-      >
-        End Game
-      </button>
-
       <main className="main">
+        <div>
+          <p>
+            <Link href="/">Go back to edit players</Link>
+          </p>
+        </div>
         <div>
           <p>
             {winnerName ? (
@@ -97,9 +79,18 @@ export default function Home() {
           ) : null}
         </div>
 
-        <div>Player wins count: {player1WinsHistory?.length} </div>
-        <div>Opponent wins count: {player2WinsHistory?.length} </div>
-        <div>Draw count: {playerDrawHistory?.length}</div>
+        <p>
+          <strong>Player wins count:</strong> {player1WinsHistory?.length}{" "}
+        </p>
+
+        <div>
+          <strong>Opponent wins count: </strong>
+          {player2WinsHistory?.length}{" "}
+        </div>
+        
+        <p>
+          <strong>Draw count:</strong> {playerDrawHistory?.length}
+        </p>
 
         {boardData?.map((item, boardIndex) => {
           return (
@@ -224,6 +215,32 @@ export default function Home() {
             </div>
           );
         })}
+
+        <p>
+          <Link href="/history">Go to game history</Link>
+        </p>
+
+        <div>
+          <button
+            onClick={() => {
+              localStorage.removeItem("X");
+              localStorage.removeItem("O");
+              localStorage.removeItem("isPlayerOne");
+
+              setBoardData(emptyData);
+              setWinner("");
+              setCurrentPlayerMoves([]);
+              setNextPlayer("");
+
+              setPlayers();
+              setPlayersName();
+              setIsPlayerOne(false);
+              router.push("/");
+            }}
+          >
+            End Game
+          </button>
+        </div>
       </main>
     </div>
   );
