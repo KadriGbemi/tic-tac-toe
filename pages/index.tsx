@@ -68,7 +68,7 @@ export default function Home() {
 
       <main className="main">
         <div id="game-form" onSubmit={handleSubmit}>
-          <h3 className="form-header-title">Game Input details</h3>
+          <h3 className="title">Game Input details</h3>
           <form>
             <label>Choose players:</label>
             <div>
