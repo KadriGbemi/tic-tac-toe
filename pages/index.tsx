@@ -66,11 +66,12 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="container">
-        <main className="main" onSubmit={handleSubmit}>
+      <main className="container main">
+        <div id="game-form" onSubmit={handleSubmit}>
+          <h3 className="form-header-title">Game Input details</h3>
           <form>
+            <label>Choose players:</label>
             <div>
-              <label>Choose players:</label>
               <select
                 name="players"
                 id="players"
@@ -81,20 +82,20 @@ export default function Home() {
                 <option value="onePlayer">Play with computer</option>
               </select>
             </div>
-            <p>
-              Player 1:{" "}
+            <div>
+              <label>Enter player 1:</label>
               <input
-                placeholder="Enter player one name"
+                placeholder="Enter player one's name"
                 id="first_name"
                 name="player-1"
                 type="text"
                 onChange={(event) => setPlayer1(event.target.value)}
                 value={player1}
               />
-            </p>
+            </div>
             {!isPlayerOne && (
-              <p>
-                Player 2:
+              <div>
+                <label>Enter player 2:</label>
                 <input
                   placeholder="Enter player two name"
                   name="player-2"
@@ -102,17 +103,17 @@ export default function Home() {
                   value={player2}
                   onChange={(event) => setPlayer2(event.target.value)}
                 />
-              </p>
+              </div>
             )}
 
             <div className="action">
               <button type="submit">
-                {previousPlayerX || previousPlayerO ? "Continue" : "Start"} Game
+                {previousPlayerX || previousPlayerO ? "Continue" : "Start"} game
               </button>
             </div>
           </form>
-        </main>
-      </div>
+        </div>
+      </main>
     </div>
   );
 }
