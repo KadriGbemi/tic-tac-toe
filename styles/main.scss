@@ -1,0 +1,38 @@
+.container {
+  margin: auto;
+
+  .action {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+.main {
+  min-height: 100vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .board-row {
+    display: flex;
+    font-size: 20px;
+
+    .board-item {
+      background-color: #fff;
+      border: 0.5px solid black;
+      width: 80px;
+      height: 80px;
+      cursor: pointer;
+      font-size: 25px;
+    }
+
+    .player--color-X {
+      color: red;
+    }
+    .player--color-O {
+      color: blue;
+    }
+  }
+}
