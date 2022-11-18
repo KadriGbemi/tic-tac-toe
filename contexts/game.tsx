@@ -1,24 +1,10 @@
-import { createContext, ReactNode, useState, useEffect } from "react";
+import { createContext, useState, useEffect } from "react";
 
-interface GameContextInterface {
-  players?: {
-    player1?: string;
-    player2?: string;
-  };
-  isPlayerOne: Boolean;
-  winner?: string;
-  setPlayers: Function;
-  setWinner: Function;
-  playersName?: {
-    [type: string]: string;
-  };
-  setPlayersName: Function;
-  setIsPlayerOne: Function;
-}
-
-interface GameContextProps {
-  children?: ReactNode;
-}
+import {
+  GameContextInterface,
+  GameContextProps,
+  GameHistory,
+} from "../types/game";
 
 export const GameContext = createContext<GameContextInterface>({
   players: {
@@ -30,11 +16,14 @@ export const GameContext = createContext<GameContextInterface>({
   setIsPlayerOne: () => {},
   setPlayersName: () => {},
   setWinner: () => {},
+  gameHistory: [],
+  setGameHistory: () => {},
 });
 
 export const GameProvider = ({ children }: GameContextProps) => {
   const [players, setPlayers] = useState({});
   const [isPlayerOne, setIsPlayerOne] = useState(false);
+  const [gameHistory, setGameHistory] = useState<GameHistory[]>([]);
 
   useEffect(() => {
     const player1 = localStorage.getItem("X") || "";
@@ -71,6 +60,8 @@ export const GameProvider = ({ children }: GameContextProps) => {
         winner,
         setWinner,
         playersName,
+        gameHistory,
+        setGameHistory,
         setPlayersName,
       }}
     >

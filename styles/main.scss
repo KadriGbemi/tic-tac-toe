@@ -1,5 +1,10 @@
 .container {
   margin: auto;
+  padding: 30px;
+
+  .history {
+    border: 2px solid black;
+  }
 
   .action {
     display: flex;
