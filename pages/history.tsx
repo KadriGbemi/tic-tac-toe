@@ -13,6 +13,9 @@ export default function GameHistory() {
     <div className="container">
       {gameHistory?.length ? (
         <div className="history">
+          <small>
+            <Link href="/game">Back to game board</Link>
+          </small>
           <h2 className="title">Game history details</h2>
           <ul className="responsive-table">
             <li className="table-header">
